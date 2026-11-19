@@ -103,3 +103,7 @@ uvicorn app.main:app --reload
   (2024-11-01) silently ignore the DateOfBirth category.
 - The OCR route doesn't redact photos, signatures or handwriting that OCR can't read.
   Review high-stakes documents before releasing them.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
