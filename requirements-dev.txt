@@ -1,0 +1,3 @@
+-r requirements.txt
+pytest>=8
+playwright>=1.40   # browser tests; they use your installed Chrome (no browser download)

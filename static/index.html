@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document Redactor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Document Redactor</h1>
+    <span class="subtitle">Azure Language PII redaction</span>
+  </header>
+
+  <main>
+    <!-- ───────────── Redaction request ───────────── -->
+    <section class="card" id="redact-card">
+      <h2>1. Redact a document</h2>
+
+      <div class="field">
+        <label for="doc">Document</label>
+        <div class="doc-row">
+          <select id="doc"></select>
+          <button type="button" id="upload-btn">Upload PDF…</button>
+          <button type="button" id="delete-doc" class="danger">Remove…</button>
+          <input type="file" id="upload" accept="application/pdf,.pdf" multiple hidden>
+        </div>
+        <p class="hint" id="privacy-note"></p>
+      </div>
+
+      <fieldset>
+        <legend>Redact these categories</legend>
+        <div class="cats" id="cats"></div>
+        <div class="cat-actions">
+          <button type="button" class="link" id="select-all">Select all</button>
+          <button type="button" class="link" id="select-none">Clear</button>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button id="go" class="primary">Redact</button>
+      </div>
+
+      <div id="output" class="output" hidden></div>
+    </section>
+
+    <!-- ───────────── Side-by-side comparison ───────────── -->
+    <section class="card" id="compare-card">
+      <div class="compare-header">
+        <h2>2. Original vs. redacted</h2>
+        <div class="compare-controls">
+          <label>Zoom
+            <select id="zoom">
+              <option value="0.6">60%</option>
+              <option value="0.8">80%</option>
+              <option value="1" selected>Fit</option>
+              <option value="1.5">150%</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="compare-pickers">
+        <div class="field">
+          <span>Original</span>
+          <div class="original-name" id="cmp-original"></div>
+          <div class="file-actions" id="actions-original">
+            <a id="open-original" target="_blank" rel="noopener">Open PDF ↗</a>
+            <a id="download-original">Download</a>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cmp-version">Redacted version</label>
+          <select id="cmp-version"></select>
+          <span id="version-info" class="hint"></span>
+          <div class="file-actions" id="actions-redacted">
+            <a id="open-redacted" target="_blank" rel="noopener">Open PDF ↗</a>
+            <a id="download-redacted">Download</a>
+            <button type="button" class="link danger" id="delete-version">Remove version</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="compare-status" class="hint"></div>
+      <div id="compare" class="compare"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
